@@ -25,6 +25,7 @@ app.get('/', (req, res) => {
       {
         '/books------------------------->': 'Get all books',
         '/books/id/--------------------->': 'Get book by Id',
+        '/books/isbn/--------------------->': 'Get book by Isbn',
       },
     ],
   };
@@ -73,6 +74,21 @@ app.get('/books/id/:id', async (req, res) => {
     }
   } catch (err) {
     res.status(400).json({ error: 'Bad request!' });
+  }
+});
+
+app.get('/books/isbn/:isbnNr', async (req, res) => {
+  const { isbnNr } = req.params;
+
+  try {
+    const book = await Book.findOne({ isbn: isbnNr });
+    if (book) {
+      res.json(book);
+    } else {
+      res.status(404).json({ error: 'Book not found' });
+    }
+  } catch (error) {
+    res.status(400).json({ error: 'Bad request' });
   }
 });
 
