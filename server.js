@@ -97,34 +97,3 @@ app.listen(port, () => {
   // eslint-disable-next-line
   console.log(`Server running on http://localhost:${port}`);
 });
-
-// app.get('/books/isbn/:isbn', async (req, res) => {
-//   const bookByIsbn = await Book.findOne({ _id: req.params.isbn });
-//   try {
-//     if (bookByIsbn) {
-//       res.json(bookByIsbn);
-//     } else {
-//       res.status(404).json({ error: 'BookId not found' });
-//     }
-//   } catch (err) {
-//     res.status(400).json({ error: 'Bad request!' });
-//   }
-// });
-
-// app.get('/books/num_pages/:num_pages', async (req, res) => {
-//   const bookByNumPages = await Book.findOne();
-//   res.json(bookByNumPages);
-// });
-
-// const Author = mongoose.model('Author');
-// app.get('/books/author', (req, res) => {
-//   Author.customFilter(req.query).exec((err, results) => {
-//     if (err) return next(err);
-//     res.json(Author);
-//   });
-// });
-
-// app.get('/books/authors/:authors', async (req, res) => {
-//   const bookByAuthors = await Book.findOne();
-//   res.json(bookByAuthors);
-// });
